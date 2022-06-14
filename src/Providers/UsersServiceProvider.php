@@ -155,6 +155,7 @@ class UsersServiceProvider extends DomainServiceProvider
         $this->registerUserInterceptors();
         $this->registerRoleInterceptors();
         $this->registerPermissionInterceptors();
+        $this->registerTokenInterceptors();
     }
 
     /**
@@ -284,6 +285,27 @@ class UsersServiceProvider extends DomainServiceProvider
             UseCases\Permission\Delete\PermissionDeleteInteractor::class,
             Controllers\Permission\PermissionDeleteController::class,
             Presenters\Permission\PermissionDeleteHttpPresenter::class,
+        );
+    }
+
+    /**
+     * Register tokens specific interceptors
+     * @return void
+     */
+    private function registerTokenInterceptors(): void
+    {
+        $this->registerInterceptorFromParameters(
+            UseCases\Token\List\TokenListInputPort::class,
+            UseCases\Token\List\TokenListInteractor::class,
+            Controllers\Token\TokenListController::class,
+            Presenters\Token\TokenListHttpPresenter::class,
+        );
+
+        $this->registerInterceptorFromParameters(
+            UseCases\Token\Delete\TokenDeleteInputPort::class,
+            UseCases\Token\Delete\TokenDeleteInteractor::class,
+            Controllers\Token\TokenDeleteController::class,
+            Presenters\Token\TokenDeleteHttpPresenter::class,
         );
     }
 }

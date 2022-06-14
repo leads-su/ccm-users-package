@@ -2,6 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::prefix('tokens')->group(static function(): void {
+    Route::name('domain.token.list')
+        ->get('', \ConsulConfigManager\Users\Http\Controllers\Token\TokenListController::class);
+    Route::name('domain.token.delete')
+        ->delete('{identifier}', \ConsulConfigManager\Users\Http\Controllers\Token\TokenDeleteController::class);
+});
+
 Route::prefix('users')->group(static function (): void {
     Route::get('', \ConsulConfigManager\Users\Http\Controllers\User\UserListController::class)
         ->name('domain.users.users.list');

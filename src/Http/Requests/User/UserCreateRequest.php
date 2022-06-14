@@ -3,7 +3,6 @@
 namespace ConsulConfigManager\Users\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
-use ConsulConfigManager\Users\ValueObjects\PasswordValueObject;
 use ConsulConfigManager\Users\ValueObjects\UsernameValueObject;
 
 /**
